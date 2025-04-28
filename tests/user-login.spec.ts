@@ -1,11 +1,11 @@
 import { test, expect } from '@playwright/test';
+import { LoginPage } from '../pages/login.page';
 
 test ('Verify login with valid credentials',(async ({ page }) => {
+  const loginPage = new LoginPage(page);
  
   await page.goto('/auth/login');
-  await page.getByLabel('Email address').fill('customer@practicesoftwaretesting.com');
-  await page.getByTestId('password').fill('welcome01');
-  await page.getByRole('button', { name: 'Login' }).click();
+  await loginPage.login('customer@practicesoftwaretesting.com','welcome01' );
 
   await expect(page).toHaveURL('/account');
   await expect(page.locator('h1')).toHaveText('My account');

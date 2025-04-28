@@ -1,16 +1,22 @@
 import { test, expect } from '@playwright/test';
+import { HomePage } from '../pages/home.page';
+import { PdpPage } from '../pages/product.page';
+
+
 
 test ('Verify user can view product details',(async ({ page }) => {
+   const homePage = new HomePage(page);
+   const pdpPage = new PdpPage(page);
 
   await page.goto('/');
-  await page.getByText('Combination Pliers').click();
+  await homePage.productClick('Combination Pliers');
 
 
 
   await expect(page).toHaveURL(/\/product/);
-  await expect(page.locator('h1')).toHaveText('Combination Pliers');
-  await expect(page.getByTestId('unit-price')).toHaveText('14.15');
-  await expect(page.getByRole('button', { name: 'Add to Cart' })).toBeVisible();
-  await expect(page.getByTestId('add-to-favorites')).toBeVisible();
+  await expect(pdpPage.title).toHaveText('Combination Pliers');
+  await expect(pdpPage.price).toHaveText('14.15');
+  await expect(pdpPage.addCartButton).toBeVisible();
+  await expect(pdpPage.addFavoritesButton).toBeVisible();
 
 }));
