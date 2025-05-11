@@ -1,30 +1,30 @@
 import { test, expect } from '@playwright/test';
-import { PdpPage } from '../pages/product.page';
+import { ProductPage } from '../pages/product.page';
 
 test ('Verify user can add product to cart',(async ({ page }) => {
-  const pdpPage = new PdpPage(page);
+  const productPage = new ProductPage(page);
 
   await page.goto('/');
   await page.getByText('Slip Joint Pliers').click();
 
 
   await expect(page).toHaveURL(/\/product/);
-  await expect(pdpPage.title).toHaveText('Slip Joint Pliers');
-  await expect(pdpPage.price).toHaveText(' 9.17');
+  await expect(productPage.title).toHaveText('Slip Joint Pliers');
+  await expect(productPage.price).toHaveText(' 9.17');
   
-  await expect(pdpPage.addCartButton).toBeVisible();
-  await expect(pdpPage.addFavoritesButton).toBeVisible();
+  await expect(productPage.addCartButton).toBeVisible();
+  await expect(productPage.addFavoritesButton).toBeVisible();
 
-  await pdpPage.addCartButton.click();
+  await productPage.addCartButton.click();
 
-  const alert = pdpPage.alert;
-  await expect(pdpPage.alert).toBeVisible();
+  const alert = productPage.alert;
+  await expect(productPage.alert).toBeVisible();
 
   await expect(alert).toHaveText('Product added to shopping cart.');
   await expect(alert).toBeHidden({ timeout: 8000 });
-  await expect(pdpPage.cartIconValue).toHaveText(' 1');
+  await expect(productPage.cartIconValue).toHaveText(' 1');
 
-  await pdpPage.cartIcon.click();
+  await productPage.cartIcon.click();
 
   await expect(page).toHaveURL('/checkout');
   await expect(page.getByTestId('product-quantity')).toHaveValue('1');

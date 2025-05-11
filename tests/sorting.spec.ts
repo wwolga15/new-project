@@ -1,60 +1,49 @@
 import { test, expect } from '@playwright/test';
-import { SortingFragment } from '../fragments/sorting.fragments';
+import { HomePage } from '../pages/home.page';
+import { SortOption } from '../fragments/sorting.fragments';
 
- 
 
-test('Verify sorting by Name (A - Z)', async ({ page }) => {
-    const sorting = new SortingFragment(page);
-  
-    await page.goto('/');
-    await sorting.SelectSortOption('Name (A - Z)');
-  
-    const names = await page.getByTestId('product-name').allTextContents();
-    const trimmed = names.map(name => name.trim());
-    const sorted = [...trimmed].sort((a, b) => a.localeCompare(b));
-  
-    expect(trimmed).toEqual(sorted);
+const dataSortType: { sortBy: SortOption }[] = [
+  { sortBy: 'Name (A - Z)' },
+  { sortBy: 'Name (Z - A)' },
+  { sortBy: 'Price (Low - High)' },
+  { sortBy: 'Price (High - Low)' },
+];
+
+dataSortType.forEach(({ sortBy }) => {
+  test(`Verify user can perform sorting products by "${sortBy}"`, async ({ page}) => {
+    const homePage = new HomePage(page);
+    await homePage.navigateTo();
+    await homePage.filters.selectSortOption(sortBy);
+    switch (sortBy) {
+      case 'Name (A - Z)': {
+        const productNames = await homePage.getProductValues('name') as string[];
+        const sortedProductNames = [...productNames].sort((a, b) => a.localeCompare(b));
+        expect(productNames.join()).toBe(sortedProductNames.join());
+        break;
+      }
+      case 'Name (Z - A)': {
+        const productNames = await homePage.getProductValues('name') as string[];
+        const sortedProductNames = [...productNames].sort((a, b) => b.localeCompare(a));
+        expect(productNames.join()).toBe(sortedProductNames.join());
+        break;
+      }
+      
+      case 'Price (Low - High)': {
+        const productPrices = await homePage.getProductValues('price') as number[];
+        const sortedProductPrices = [...productPrices].sort((a, b) => a - b);
+        expect(productPrices.join()).toBe(sortedProductPrices.join());
+        break;
+      }
+      case 'Price (High - Low)': {
+        const productPrices = await homePage.getProductValues('price') as number[];
+        const sortedProductPrices = [...productPrices].sort((a, b) => b - a);
+        expect(productPrices.join()).toBe(sortedProductPrices.join());
+        break;
+      }
+    
+      default:
+        throw new Error(`Unknown sort option: ${sortBy}`);
+    }
   });
-
-  test('Verify sorting by Name (Z - A)', async ({ page }) => {
-    const sorting = new SortingFragment(page);
-  
-    await page.goto('/');
-    await sorting.SelectSortOption('Name (Z - A)');
-  
-    const names = await page.getByTestId('product-name').allTextContents();
-    const trimmed = names.map(name => name.trim());
-    const sorted = [...trimmed].sort((a, b) => b.localeCompare(a));
-  
-    expect(trimmed).toEqual(sorted);
-  });
-
-  test('Verify sorting by Price (ASC)', async ({ page }) => {
-    const sorting = new SortingFragment(page);
-  
-    await page.goto('/');
-    await sorting.SelectSortOption('Price (Low - High)');
-  
-    const priceText = await page.getByTestId('product-price').allTextContents();
-    const prices = priceText.map(text => 
-        parseFloat(text.replace(/[^0-9.]/g, ''))
-      );
-    const sorted = [...prices].sort((a, b) => a - b);
-    expect(prices).toEqual(sorted);
-  
-  });
-
-  test('Verify sorting by Price (DESC)', async ({ page }) => {
-    const sorting = new SortingFragment(page);
-  
-    await page.goto('/');
-    await sorting.SelectSortOption('Price (High - Low)');
-  
-    const priceText = await page.getByTestId('product-price').allTextContents();
-    const prices = priceText.map(text => 
-        parseFloat(text.replace(/[^0-9.]/g, ''))
-      );
-    const sorted = [...prices].sort((a, b) => b - a);
-    expect(prices).toEqual(sorted);
-  
-  });
+});

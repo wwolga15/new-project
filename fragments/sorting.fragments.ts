@@ -1,5 +1,5 @@
 import { Locator, Page } from '@playwright/test';
-type SortOption = 'Name (A - Z)' | 'Name (Z - A)' | 'Price (High - Low)' | 'Price (Low - High)';
+export type SortOption = 'Name (A - Z)' | 'Name (Z - A)' | 'Price (High - Low)' | 'Price (Low - High)';
 
 export class SortingFragment{
 page: Page;

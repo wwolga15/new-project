@@ -1,6 +1,6 @@
 import { Locator, Page } from '@playwright/test';
 
-export class PdpPage{
+export class ProductPage{
 page: Page;
 title: Locator;
 price: Locator;
@@ -20,5 +20,7 @@ constructor (page:Page){
    this.cartIconValue = this.page.locator('.badge.rounded-pill.bg-danger');
    this.cartIcon = this.page.getByTestId('nav-cart');
 }
-
+async AddProductToCart(): Promise<void> {
+   await this.addCartButton.click();
+}
 }
