@@ -39,7 +39,7 @@ async getProductValues(type: 'name' | 'price'): Promise<string[] | number[]> {
       return prices.map(text => parseFloat(text.replace(/[^0-9.]/g, '')));
     }
   
-    throw new Error(`Unsupported type: ${type}`);
+    throw new Error(`Unsupported type: ${String(type)}`);
   }
 
   async ProductClick(name: string): Promise<void> {
