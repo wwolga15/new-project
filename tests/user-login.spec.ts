@@ -1,15 +1,14 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/login.page';
+
+import { test, expect} from '../fixtures/fixture';
 import { credentials } from '../credentials';
 
-test ('Verify login with valid credentials',(async ({ page }) => {
-  const loginPage = new LoginPage(page);
+test ('Verify login with valid credentials',(async ({ loginPage }) => {
  
-  await page.goto('/auth/login');
+  await loginPage.gotoLogin();
   await loginPage.Login(credentials.email,credentials.password);
 
-  await expect(page).toHaveURL('/account');
-  await expect(page.locator('h1')).toHaveText('My account');
-  await expect(page.getByText('Jane Doe')).toBeVisible();
+  await expect(loginPage.page).toHaveURL('/account');
+  await expect(loginPage.page.locator('h1')).toHaveText('My account');
+  await expect(loginPage.page.getByText('Jane Doe')).toBeVisible();
 
 }));

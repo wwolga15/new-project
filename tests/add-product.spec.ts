@@ -1,14 +1,12 @@
-import { test, expect } from '@playwright/test';
-import { ProductPage } from '../pages/product.page';
+import { test, expect } from '../fixtures/fixture';
 
-test ('Verify user can add product to cart',(async ({ page }) => {
-  const productPage = new ProductPage(page);
+test ('Verify user can add product to cart',(async ({ homePage, productPage, page }) => {
 
-  await page.goto('/');
-  await page.getByText('Slip Joint Pliers').click();
+  await homePage.page.goto('/');
+  await homePage.page.getByText('Slip Joint Pliers').click();
 
 
-  await expect(page).toHaveURL(/\/product/);
+  await expect(productPage.page).toHaveURL(/\/product/);
   await expect(productPage.title).toHaveText('Slip Joint Pliers');
   await expect(productPage.price).toHaveText(' 9.17');
   
@@ -30,6 +28,5 @@ test ('Verify user can add product to cart',(async ({ page }) => {
   await expect(page.getByTestId('product-quantity')).toHaveValue('1');
   await expect(page.getByTestId('product-title')).toHaveText('Slip Joint Pliers ');
   await expect(page.getByRole('button', { name: 'Proceed to checkout' })).toBeVisible();
-
 
 }));

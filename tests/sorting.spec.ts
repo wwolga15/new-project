@@ -1,9 +1,8 @@
-import { test, expect } from '@playwright/test';
-import { HomePage } from '../pages/home.page';
+import { test, expect } from '../fixtures/fixture';
 
 test.describe('Sorting products', () => {
-  test('Should sort by Name (A - Z)', async ({ page }) => {
-    const homePage = new HomePage(page);
+  test('Should sort by Name (A - Z)', async ({ homePage }) => {
+
     await homePage.navigateTo();
     await homePage.filters.selectSortOption('Name (A - Z)');
 
@@ -12,8 +11,8 @@ test.describe('Sorting products', () => {
     expect(values).toEqual(sorted);
   });
 
-  test('Should sort by Name (Z - A)', async ({ page }) => {
-    const homePage = new HomePage(page);
+  test('Should sort by Name (Z - A)', async ({ homePage }) => {
+  
     await homePage.navigateTo();
     await homePage.filters.selectSortOption('Name (Z - A)');
 
@@ -22,8 +21,8 @@ test.describe('Sorting products', () => {
     expect(values).toEqual(sorted);
   });
 
-  test('Should sort by Price (Low - High)', async ({ page }) => {
-    const homePage = new HomePage(page);
+  test('Should sort by Price (Low - High)', async ({ homePage}) => {
+ 
     await homePage.navigateTo();
     await homePage.filters.selectSortOption('Price (Low - High)');
 
@@ -32,8 +31,8 @@ test.describe('Sorting products', () => {
     expect(values).toEqual(sorted);
   });
 
-  test('Should sort by Price (High - Low)', async ({ page }) => {
-    const homePage = new HomePage(page);
+  test('Should sort by Price (High - Low)', async ({ homePage }) => {
+    
     await homePage.navigateTo();
     await homePage.filters.selectSortOption('Price (High - Low)');
 
