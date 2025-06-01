@@ -1,4 +1,7 @@
-import { test, expect, defaultAddress, paymentMethod } from '../fixtures/fixture';
+import { test, expect } from '../fixtures/fixture';
+import { defaultAddress } from '../testData/defaultAddress';
+import  {paymentMethod } from '../testData/paymentMethod';
+
 
 test('E2E flow', async ({ loggedInPage, homePage, productPage, cartPage, checkoutPage }) => {
     const page = loggedInPage.page;
@@ -22,25 +25,15 @@ test('E2E flow', async ({ loggedInPage, homePage, productPage, cartPage, checkou
     await expect(page.getByText(/you are already logged in/i)).toBeVisible();
     await checkoutPage.checkoutButton.click();
 
-    await checkoutPage.ProceedCheckout(
-        defaultAddress.street,
-        defaultAddress.city,
-        defaultAddress.state,
-        defaultAddress.country,
-        defaultAddress.postcode
-      );
-      
+    const { street, city, state, country, postcode } = defaultAddress;
+    await checkoutPage.ProceedCheckout(street, city, state, country, postcode);
+
     await checkoutPage.paymentDropdown.waitFor({ state: 'visible' });
     await checkoutPage.paymentDropdown.click();
     await checkoutPage.paymentDropdown.selectOption('credit-card');
 
-    await checkoutPage.FillPayment(
-        paymentMethod.cardNumber,
-        paymentMethod.cardDate,
-        paymentMethod.cardCVV,
-        paymentMethod.holderName,
-        
-      );
+    const { cardNumber,cardDate, cardCVV,holderName  } = paymentMethod;
+    await checkoutPage.FillPayment(cardNumber,cardDate, cardCVV,holderName );
 
     await expect(page.getByText('Payment was successful')).toBeVisible();
 
