@@ -18,4 +18,7 @@ async Login (email:string, password: string): Promise<void> {
     await this.loginButton.click();
 }
 
+async gotoLogin(): Promise<void> {
+    await this.page.goto('/auth/login');
+  }
 }

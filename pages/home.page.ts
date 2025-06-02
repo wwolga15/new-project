@@ -46,5 +46,18 @@ async getProductValues(type: 'name' | 'price'): Promise<string[] | number[]> {
     const product = this.productName.filter({ hasText: name }).first();
     await  product.click();
   }
+
+  async getFirstProductName(): Promise<string> {
+    return this.productName.first().innerText();
+  }
+  
+  async clickFirstProduct(): Promise<void> {
+    await this.productName.first().click();
+  }
+
+  async getProductPrice(): Promise<string> {
+    const text = await this.productPrice.first().innerText();
+    return text.replace('$', '').trim();
+  }
 }
 
