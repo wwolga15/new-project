@@ -5,7 +5,6 @@ import { ProductPage } from '../pages/product.page';
 import { AccountPage } from '../pages/account.page';
 import { CartPage } from '../pages/cart.page';
 import { CheckoutPage } from '../pages/checkout.page';
-import { credentials } from '../credentials';
 
 type Fixtures = {
     loginPage: LoginPage;
@@ -33,15 +32,10 @@ type Fixtures = {
             const productPage = new ProductPage(page);
             await use( productPage);
           },
-
-          
+    
     loggedInPage: async ({ page }, use) => {
       const accountPage = new AccountPage(page);
-      const  loginPage = new LoginPage(page);
-      await page.goto('/auth/login');
-      await loginPage.Login(credentials.email, credentials.password);
-      await page.waitForURL('/account');
-      await use( accountPage);
+      await use(accountPage);
      
           }, 
 

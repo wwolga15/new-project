@@ -1,14 +1,15 @@
 
 import { test, expect} from '../fixtures/fixture';
-import { credentials } from '../credentials';
 
-test ('Verify login with valid credentials',(async ({ loginPage }) => {
+const authFile =  'playwright/.auth/user.json';
+test.use({storageState: authFile});
+
+test ('Verify login with valid credentials',(async ({ page }) => {
  
-  await loginPage.gotoLogin();
-  await loginPage.Login(credentials.email,credentials.password);
+  await page.goto('/account');
 
-  await expect(loginPage.page).toHaveURL('/account');
-  await expect(loginPage.page.locator('h1')).toHaveText('My account');
-  await expect(loginPage.page.getByText('Jane Doe')).toBeVisible();
+  await expect(page).toHaveURL('/account');
+  await expect(page.locator('h1')).toHaveText('My account');
+  await expect(page.getByText('Jane Doe')).toBeVisible();
 
 }));

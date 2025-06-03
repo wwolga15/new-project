@@ -2,9 +2,11 @@ import { test, expect } from '../fixtures/fixture';
 import { defaultAddress } from '../testData/defaultAddress';
 import  {paymentMethod } from '../testData/paymentMethod';
 
+const authFile =  'playwright/.auth/user.json';
+test.use({storageState: authFile});
 
-test('E2E flow', async ({ loggedInPage, homePage, productPage, cartPage, checkoutPage }) => {
-    const page = loggedInPage.page;
+test('E2E flow', async ({ page, homePage, productPage, cartPage, checkoutPage }) => {
+    
     await page.goto('/');
 
     const productName = await homePage.getFirstProductName();
