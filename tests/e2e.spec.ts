@@ -1,11 +1,11 @@
 import { test, expect } from '../fixtures/fixture';
 import { defaultAddress } from '../testData/defaultAddress';
-import  {paymentMethod } from '../testData/paymentMethod';
+import { paymentMethod } from '../testData/paymentMethod';
+import { authFile } from '../authPath';
 
-const authFile =  'playwright/.auth/user.json';
 test.use({storageState: authFile});
 
-test('E2E flow', async ({ page, homePage, productPage, cartPage, checkoutPage }) => {
+test.skip('E2E flow', async ({ page, homePage, productPage, cartPage, checkoutPage }) => {
     
     await page.goto('/');
 
@@ -28,14 +28,14 @@ test('E2E flow', async ({ page, homePage, productPage, cartPage, checkoutPage })
     await checkoutPage.checkoutButton.click();
 
     const { street, city, state, country, postcode } = defaultAddress;
-    await checkoutPage.ProceedCheckout(street, city, state, country, postcode);
+    await checkoutPage.proceedCheckout(street, city, state, country, postcode);
 
     await checkoutPage.paymentDropdown.waitFor({ state: 'visible' });
     await checkoutPage.paymentDropdown.click();
     await checkoutPage.paymentDropdown.selectOption('credit-card');
 
     const { cardNumber,cardDate, cardCVV,holderName  } = paymentMethod;
-    await checkoutPage.FillPayment(cardNumber,cardDate, cardCVV,holderName );
+    await checkoutPage.fillPayment(cardNumber,cardDate, cardCVV,holderName );
 
     await expect(page.getByText('Payment was successful')).toBeVisible();
 

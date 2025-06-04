@@ -12,7 +12,7 @@ constructor (page:Page){
    this.password = this.page.getByTestId('password');
    this.loginButton = this.page.getByRole('button', { name: 'Login' });
 }
-async Login (email:string, password: string): Promise<void> {
+async login (email:string, password: string): Promise<void> {
     await this.email.fill(email);
     await this.password.fill(password);
     await this.loginButton.click();

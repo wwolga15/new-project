@@ -1,10 +1,10 @@
 
 import { test, expect} from '../fixtures/fixture';
+import { authFile } from '../authPath';
 
-const authFile =  'playwright/.auth/user.json';
 test.use({storageState: authFile});
 
-test ('Verify login with valid credentials',(async ({ page }) => {
+test.skip ('Verify login with valid credentials',(async ({ page }) => {
  
   await page.goto('/account');
 

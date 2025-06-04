@@ -19,6 +19,6 @@
       /* Completeness */
       "skipLibCheck": true /* Skip type checking all .d.ts files. */
     },
-    "include": ["**/*.ts", "tests/auth"],
+    "include": ["**/*.ts"],
     "exclude": ["eslint.config.mjs"]
   }

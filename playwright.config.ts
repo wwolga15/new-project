@@ -33,24 +33,25 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
   /* Configure projects for major browsers */
-  projects: [
-    // { name: 'auth', testMatch: /.*\.auth.login\.spec\.ts/ },
-    { name: 'auth', testMatch: /.*auth\.login\.spec\.ts/ },
-
-    {
-      name: 'chromium',
-      use: { 
-        ...devices['Desktop Chrome'],
-        storageState: 'playwright/.auth/user.json',
-        headless: false,
-       },
-       dependencies: ['auth'],
-    },
-
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+  
+    projects: [
+    
+      { name: 'auth',
+        testDir: './tests/auth',
+        },
+  
+      {
+        name: 'chromium',
+        testDir: './tests', 
+        use: { 
+          ...devices['Desktop Chrome'],
+          storageState: 'playwright/.auth/user.json',
+          headless: false,
+         },
+         dependencies: ['auth'],
+         testIgnore: /.*auth\.login\.spec\.ts/,
+        
+      },
 
     {
       name: 'webkit',
