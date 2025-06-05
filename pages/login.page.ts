@@ -1,4 +1,4 @@
-import { Locator, Page } from '@playwright/test';
+import { Locator, Page, expect  } from '@playwright/test';
 
 export class LoginPage{
 page: Page;
@@ -13,6 +13,7 @@ constructor (page:Page){
    this.loginButton = this.page.getByRole('button', { name: 'Login' });
 }
 async login (email:string, password: string): Promise<void> {
+  await expect(this.email).toBeVisible();
     await this.email.fill(email);
     await this.password.fill(password);
     await this.loginButton.click();

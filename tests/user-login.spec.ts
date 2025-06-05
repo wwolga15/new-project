@@ -4,9 +4,10 @@ import { authFile } from '../authPath';
 
 test.use({storageState: authFile});
 
-test.skip ('Verify login with valid credentials',(async ({ page }) => {
+test ('Verify login with valid credentials',(async ({ page }) => {
  
   await page.goto('/account');
+  await page.waitForURL('/account');
 
   await expect(page).toHaveURL('/account');
   await expect(page.locator('h1')).toHaveText('My account');

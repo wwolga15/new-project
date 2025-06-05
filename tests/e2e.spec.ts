@@ -5,9 +5,10 @@ import { authFile } from '../authPath';
 
 test.use({storageState: authFile});
 
-test.skip('E2E flow', async ({ page, homePage, productPage, cartPage, checkoutPage }) => {
+test('E2E flow', async ({ page, homePage, productPage, cartPage, checkoutPage }) => {
     
     await page.goto('/');
+    await page.waitForURL('/');
 
     const productName = await homePage.getFirstProductName();
     const productPrice = await homePage.getProductPrice();
