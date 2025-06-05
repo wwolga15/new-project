@@ -5,7 +5,7 @@
       "value": "GA1.1.1068389444.1748884764",
       "domain": ".practicesoftwaretesting.com",
       "path": "/",
-      "expires": 1783689533.625031,
+      "expires": 1783692238.595909,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
@@ -21,11 +21,21 @@
       "sameSite": "None"
     },
     {
-      "name": "_ga_0BJFXRKTYC",
-      "value": "GS2.1.s1749129507$o8$g1$t1749129533$j34$l0$h0",
+      "name": "cf_clearance",
+      "value": "LF5HilnaEGiXPaZA9oJgFEbmmu.LIH.gXJVcd0ztXME-1749132237-1.2.1.1-FhtWajNTuYtmDXtwR5Zn7Az0P_HJKqIqxU4eXykFGAQfLV8hpxavKbY8AFzo3GPAKICPXFxQFhrQBdBe8KFo940_BRG.B_hBdLcDeiSAbrx3PMeLAUROsX0ezJdn26r85rHb.QbeQpXAffHx1bfs..TPEXynppPFJPXV0uJm_Vw.UJsynitp7lGcZP8ATBFRPeioag8LmD2GnM7CuNw1T7B7V9CcHx95MHygftUWcCx9BuqI9aMiTs14xVIQcCIO9ycvbHzuRI.vAo7ID3M8_izxDzhYXjKDF_QpgNoSPQUASzktKUbOaP2sC5XTfpHYj9L0pU_tmQNhbwqMtz7PdM62wie5OtlBaMqr8lT2ShM",
       "domain": ".practicesoftwaretesting.com",
       "path": "/",
-      "expires": 1783689533.638998,
+      "expires": 1780668237.222951,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ga_0BJFXRKTYC",
+      "value": "GS2.1.s1749132237$o9$g1$t1749132238$j59$l0$h0",
+      "domain": ".practicesoftwaretesting.com",
+      "path": "/",
+      "expires": 1783692238.614094,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
@@ -37,7 +47,7 @@
       "localStorage": [
         {
           "name": "auth-token",
-          "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5wcmFjdGljZXNvZnR3YXJldGVzdGluZy5jb20vdXNlcnMvbG9naW4iLCJpYXQiOjE3NDkxMjk1MzMsImV4cCI6MTc0OTEyOTgzMywibmJmIjoxNzQ5MTI5NTMzLCJqdGkiOiJqVUpMTkVTeEdSZ0Q4d1FoIiwic3ViIjoiMDFKWDAyVjZUUk1WMFpBSFYzMU1XTUNCNDUiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3Iiwicm9sZSI6InVzZXIifQ.SVrbx70ghw5VNA3nCWOQ5yw86hckj_IT5qsvRJVh1qw"
+          "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5wcmFjdGljZXNvZnR3YXJldGVzdGluZy5jb20vdXNlcnMvbG9naW4iLCJpYXQiOjE3NDkxMzIyMzgsImV4cCI6MTc0OTEzMjUzOCwibmJmIjoxNzQ5MTMyMjM4LCJqdGkiOiJCRXVka0w1dVpCODIzUGxVIiwic3ViIjoiMDFKWDA2OTJDQ1g1MTdQM1YyTVlOOEtQQTQiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3Iiwicm9sZSI6InVzZXIifQ.vuX7Oe7kkM66qp5O3wYiQA-oEHkIQFS5WJL4qEX-bF8"
         }
       ]
     }
