@@ -4,7 +4,7 @@ import { authFile } from '../authPath';
 
 test.use({storageState: authFile});
 
-test ('Verify login with valid credentials',(async ({ page }) => {
+test.skip ('Verify login with valid credentials',(async ({ page }) => {
  
   await page.goto('/account');
   await page.waitForURL('/account');

@@ -10,7 +10,7 @@ type Fixtures = {
     loginPage: LoginPage;
     homePage: HomePage;
     productPage : ProductPage;
-    loggedInPage : AccountPage;
+    accountPage : AccountPage;
     cartPage : CartPage;
     checkoutPage : CheckoutPage;
 
@@ -33,7 +33,7 @@ type Fixtures = {
             await use( productPage);
           },
     
-    loggedInPage: async ({ page }, use) => {
+    accountPage: async ({ page }, use) => {
       const accountPage = new AccountPage(page);
       await use(accountPage);
      

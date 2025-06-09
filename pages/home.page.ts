@@ -1,4 +1,4 @@
-import { Locator, Page, expect } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
 import { ProductsFiltersFragment } from '../fragments/filters.fragment';
 import { SortingFragment } from '../fragments/sorting.fragments';
 
@@ -47,13 +47,9 @@ async getProductValues(type: 'name' | 'price'): Promise<string[] | number[]> {
     await  product.click();
   }
 
-  // async getFirstProductName(): Promise<string> {
-  //   return this.productName.first().innerText();
-  // }
-
   async getFirstProductName(): Promise<string> {
     const firstProduct = this.productName.first();
-    await expect(firstProduct).toBeVisible();
+    await firstProduct.waitFor({ state: 'visible' });
     return firstProduct.innerText();
   }
   

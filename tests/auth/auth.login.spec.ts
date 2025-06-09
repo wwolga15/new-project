@@ -1,7 +1,7 @@
 import { test , expect} from '../../fixtures/fixture';
 import { credentials } from '../../credentials';
+import { authFile } from '../../authPath';
 
-const authFile =  'playwright/.auth/user.json';
 test.use({storageState: authFile});
 
 
