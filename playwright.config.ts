@@ -32,18 +32,26 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
-
   /* Configure projects for major browsers */
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+  
+    projects: [
+    
+      { name: 'auth',
+        testDir: './tests/auth',
+        },
+  
+      {
+        name: 'chromium',
+        testDir: './tests', 
+        use: { 
+          ...devices['Desktop Chrome'],
+          storageState: 'playwright/.auth/user.json',
+          headless: false,
+         },
+         dependencies: ['auth'],
+         testIgnore: /.*auth\.login\.spec\.ts/,
+        
+      },
 
     {
       name: 'webkit',

@@ -38,7 +38,7 @@ constructor (page:Page){
 
   
 }
-async ProceedCheckout (street:string, city: string, state: string, country: string, postcode: string): Promise<void> {
+async proceedCheckout (street:string, city: string, state: string, country: string, postcode: string): Promise<void> {
     await this.street.fill(street);
     await this.city.fill(city);
     await this.state.fill(state);
@@ -48,7 +48,7 @@ async ProceedCheckout (street:string, city: string, state: string, country: stri
 
 }
 
-async FillPayment (cardNumber: string, cardDate: string, cardCVV: string, holderName: string): Promise<void> {
+async fillPayment (cardNumber: string, cardDate: string, cardCVV: string, holderName: string): Promise<void> {
     await this.cardNumber.fill(cardNumber);
     await this.cardDate.fill(cardDate);
     await this.cardCVV.fill(cardCVV);

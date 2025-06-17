@@ -5,7 +5,7 @@ import { test, expect } from '../fixtures/fixture';
 test ('Verify user can view product details',(async ({ homePage,productPage }) => {
 
   await homePage.page.goto('/');
-  await homePage.ProductClick('Combination Pliers');
+  await homePage.productClick('Combination Pliers');
 
 
 

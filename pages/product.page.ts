@@ -20,7 +20,7 @@ constructor (page:Page){
    this.cartIconValue = this.page.locator('.badge.rounded-pill.bg-danger');
    this.cartIcon = this.page.getByTestId('nav-cart');
 }
-async AddProductToCart(): Promise<void> {
+async addProductToCart(): Promise<void> {
    await this.addCartButton.click();
 }
 }

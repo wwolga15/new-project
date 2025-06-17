@@ -42,13 +42,15 @@ async getProductValues(type: 'name' | 'price'): Promise<string[] | number[]> {
     throw new Error(`Unsupported type: ${String(type)}`);
   }
 
-  async ProductClick(name: string): Promise<void> {
+  async productClick(name: string): Promise<void> {
     const product = this.productName.filter({ hasText: name }).first();
     await  product.click();
   }
 
   async getFirstProductName(): Promise<string> {
-    return this.productName.first().innerText();
+    const firstProduct = this.productName.first();
+    await firstProduct.waitFor({ state: 'visible' });
+    return firstProduct.innerText();
   }
   
   async clickFirstProduct(): Promise<void> {

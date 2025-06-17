@@ -1,14 +1,16 @@
 
 import { test, expect} from '../fixtures/fixture';
-import { credentials } from '../credentials';
+import { authFile } from '../authPath';
 
-test ('Verify login with valid credentials',(async ({ loginPage }) => {
+test.use({storageState: authFile});
+
+test.skip ('Verify login with valid credentials',(async ({ page }) => {
  
-  await loginPage.gotoLogin();
-  await loginPage.Login(credentials.email,credentials.password);
+  await page.goto('/account');
+  await page.waitForURL('/account');
 
-  await expect(loginPage.page).toHaveURL('/account');
-  await expect(loginPage.page.locator('h1')).toHaveText('My account');
-  await expect(loginPage.page.getByText('Jane Doe')).toBeVisible();
+  await expect(page).toHaveURL('/account');
+  await expect(page.locator('h1')).toHaveText('My account');
+  await expect(page.getByText('Jane Doe')).toBeVisible();
 
 }));
