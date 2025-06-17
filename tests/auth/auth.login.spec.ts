@@ -2,7 +2,7 @@ import { test , expect} from '../../fixtures/fixture';
 import { credentials } from '../../credentials';
 import { authFile } from '../../authPath';
 
-// test.use({storageState: authFile});
+test.use({storageState: authFile});
 
 
 test ('Verify login with valid credentials',(async ({ loginPage }) => {
