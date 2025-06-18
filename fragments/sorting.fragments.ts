@@ -14,7 +14,8 @@ constructor (page:Page){
 
 async SelectSortOption (option: SortOption): Promise<void> {
     const responsePromise = this.page.waitForResponse((response) =>
-response.url().includes('/products?sort=')
+    response.url().includes('/products') 
+    &&  response.url().includes('sort=')
     &&  response.status() === 200
     &&  response.request().method() === 'GET',
 );
