@@ -14,7 +14,7 @@ sortingFragment: SortingFragment;
     await this.sortingFragment.SelectSortOption(sortBy);
   }
 
-  async SelectCategoryOption(option: CategoryOption): Promise<void> {
+  async selectCategoryOption(option: CategoryOption): Promise<void> {
     const responsePromise = this.page.waitForResponse((response) =>
       response.url().includes('/products/sander01') &&
       response.status() === 200 &&

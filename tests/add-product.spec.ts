@@ -7,7 +7,7 @@ test ('Verify user can add product to cart',(async ({ homePage, productPage, pag
 });
   
 await test.step('Product page is opened', async () => {
- await homePage.page.getByText('Slip Joint Pliers').click();
+await homePage.productClick('Slip Joint Pliers');
 });
 
 await test.step('Check page URL and elements on Product page', async () => {

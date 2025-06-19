@@ -8,7 +8,6 @@ test.use({storageState: authFile});
 test('E2E flow', async ({ page, homePage, productPage, cartPage, checkoutPage }) => {
     await test.step('Open Home page', async () => {
      await page.goto('/');
-     await page.waitForURL('/');
 });
 
     const productName = await homePage.getFirstProductName();
@@ -39,7 +38,7 @@ test('E2E flow', async ({ page, homePage, productPage, cartPage, checkoutPage })
 
     await test.step('Verify user is logged in', async () => {
      await checkoutPage.checkoutButton.click();
-     await expect(page.getByText(/you are already logged in/i)).toBeVisible();
+     await expect(checkoutPage.confirmLoginMessage).toBeVisible();
 });
 
     await test.step('Verify Billing address window is opened', async () => {
@@ -56,10 +55,10 @@ test('E2E flow', async ({ page, homePage, productPage, cartPage, checkoutPage })
     await checkoutPage.paymentDropdown.selectOption('credit-card');
 
     const { cardNumber,cardDate, cardCVV,holderName  } = paymentMethod;
-    await checkoutPage.fillPayment(cardNumber,cardDate, cardCVV,holderName );
-
     await test.step('Verify Payment is successful', async () => {
-     await expect(page.getByText('Payment was successful')).toBeVisible();
+    await checkoutPage.fillPayment(cardNumber,cardDate, cardCVV,holderName );
+    await expect(checkoutPage.confirmPaymentMessage).toBeVisible();
+     
 });
 
 });

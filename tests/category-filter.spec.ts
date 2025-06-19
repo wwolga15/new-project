@@ -10,7 +10,7 @@ test('Verify filter by Category', async ({ homePage }) => {
     });
 
     await test.step('Select Category', async () => {
-     await homePage.filters.SelectCategoryOption(PowerToolsOption.Sander);
+     await homePage.filters.selectCategoryOption(PowerToolsOption.Sander);
     });
     
     await test.step('Verify selected Category', async () => {
