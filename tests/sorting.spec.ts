@@ -1,6 +1,10 @@
 import { test, expect } from '../fixtures/fixture';
 
-test.describe('Sorting products', () => {
+test.describe('Sorting products',
+  {
+    tag: '@regression'
+  
+  }, () => {
   test('Should sort by Name (A - Z)', async ({ homePage }) => {
 
     await test.step('Open Home page and select Name (A - Z)', async () => {
