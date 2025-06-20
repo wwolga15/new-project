@@ -4,7 +4,10 @@ import { authFile } from '../authPath';
 
 test.use({storageState: authFile});
 
-test ('Verify login with valid credentials',(async ({ page }) => {
+test ('Verify login with valid credentials', {
+  tag: '@smoke'
+
+},(async ({ page }) => {
 
   await test.step('Open Account page', async () => {
    await page.goto('/account');
@@ -20,5 +23,4 @@ test ('Verify login with valid credentials',(async ({ page }) => {
    await expect(page.getByText('Jane Doe')).toBeVisible();
   });
  
-
 }));

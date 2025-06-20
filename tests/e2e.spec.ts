@@ -5,7 +5,9 @@ import { authFile } from '../authPath';
 
 test.use({storageState: authFile});
 
-test('E2E flow', async ({ page, homePage, productPage, cartPage, checkoutPage }) => {
+test('E2E flow',{
+        tag: '@smoke'   
+  }, async ({ page, homePage, productPage, cartPage, checkoutPage }) => {
     await test.step('Open Home page', async () => {
      await page.goto('/');
 });

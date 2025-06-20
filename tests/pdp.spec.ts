@@ -2,7 +2,10 @@ import { test, expect } from '../fixtures/fixture';
 
 
 
-test ('Verify user can view product details',(async ({ homePage,productPage }) => {
+test ('Verify user can view product details',{
+  tag: '@smoke'
+
+},(async ({ homePage,productPage }) => {
 
   await test.step('Home page is opened', async () => {
    await homePage.page.goto('/');
