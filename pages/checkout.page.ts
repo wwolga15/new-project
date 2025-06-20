@@ -15,6 +15,8 @@ cardDate:Locator;
 cardCVV: Locator;
 holderName:  Locator;
 confirmButton:  Locator;
+confirmLoginMessage:Locator;
+confirmPaymentMessage:Locator;
 
 
 constructor (page:Page){
@@ -34,6 +36,8 @@ constructor (page:Page){
    this.cardCVV = this.page.getByPlaceholder('CVV');
    this.holderName = this.page.getByPlaceholder('Card Holder Name');
    this.confirmButton = this.page.getByRole('button', { name: 'Confirm' });
+   this.confirmLoginMessage = this.page.getByText(/you are already logged in/i);
+   this.confirmPaymentMessage = this.page.getByText('Payment was successful');
    
 
   
