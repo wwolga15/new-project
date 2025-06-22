@@ -3,7 +3,11 @@ import {  PowerToolsOption } from '../enums/categories.enum';
 
 
 
-test('Verify filter by Category', async ({ homePage }) => {
+test('Verify filter by Category',
+  {
+    tag: '@regression'
+  
+  }, async ({ homePage }) => {
    
     await test.step('Home page is opened', async () => {
      await homePage.navigateTo();

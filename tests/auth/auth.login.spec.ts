@@ -5,7 +5,11 @@ import { authFile } from '../../authPath';
 test.use({storageState: authFile});
 
 
-test ('Verify login with valid credentials',(async ({ loginPage }) => {
+test ('Verify login with valid credentials',
+  {
+    tag: '@smoke'
+  
+  },(async ({ loginPage }) => {
  
   await loginPage.gotoLogin();
   await loginPage.login(credentials.email,credentials.password);
